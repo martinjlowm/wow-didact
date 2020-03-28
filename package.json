@@ -1,0 +1,19 @@
+{
+  "name": "didact",
+  "description": "React-like UI rendering for widgets in WoW AddOns",
+  "scripts": {
+    "build": "tstl -p tsconfig.json",
+    "test": "yarn build && echo 'Not implemented yet'",
+    "watch": "tstl -p tsconfig.json --watch"
+  },
+  "devDependencies": {
+    "@types/wow-api": "github:martinjlowm/types-wow-api",
+    "lua-types": "^2.7.0",
+    "tstl": "^2.4.2",
+    "typescript": "^3.8.3",
+    "typescript-to-lua": "^0.32.0"
+  },
+  "installConfig": {
+    "pnp": true
+  }
+}
