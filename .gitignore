@@ -1,3 +1,4 @@
 .log/
 .pnp.js
 .yarn/
+dist/
