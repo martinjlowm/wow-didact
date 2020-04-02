@@ -1,7 +1,7 @@
-import {Component} from './component';
-import {createElement} from './element';
-import {render} from './reconciler';
+import { Component } from '@/component';
+import { createElement } from '@/element';
+import { render } from '@/reconciler';
 
-export default {createElement, Component, render};
+export default { createElement, Component, render };
 
-export {createElement, Component, render};
+export { createElement, Component, render };

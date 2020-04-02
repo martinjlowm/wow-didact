@@ -33,6 +33,9 @@
     "pnp": true
   },
   "dependenciesMeta": {
+    "lua-types": {
+      "unplugged": true
+    },
     "wow-classic-declarations": {
       "unplugged": true
     }
