@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom"],
     "module": "commonjs",
     "baseUrl": ".",
     "outDir": "dist",
@@ -10,7 +10,7 @@
       "@/*": ["src/*"],
       "$/*": ["test/*"]
     },
-    "typeRoots": ["node_modules/@types"]
+    "types": ["lua-types/jit", "wow-classic-declarations"]
   },
   "tstl": {
     "luaTarget": "5.3",
