@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["esnext"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "types": [],
+    "paths": {
+      "@/*": ["src/*"],
+      "$/*": ["test/*"]
+    }
+  },
+  "include": [
+    "src/element.ts",
+    "src/component.ts",
+    "src/host-config.ts",
+    "src/reconciler.ts",
+    "src/hosts/test-host.ts",
+    "test/**/*.ts"
+  ]
+}

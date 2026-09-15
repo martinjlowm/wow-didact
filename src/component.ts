@@ -1,30 +1,28 @@
-import { Frame } from 'wow-classic-declarations';
-
 import { InternalElement } from '@/element';
-import { Instance, reconcile } from '@/reconciler';
 
-function updateInstance(internalInstance: Instance): void {
-  const parentDom = internalInstance.hostFrame.GetParent() as Frame;
-  const element = internalInstance.element;
-  if (parentDom) {
-    reconcile(parentDom, internalInstance, element);
-  } else {
-    throw 'Tried to reconcile instance with no dom.parentDom';
-  }
-}
-
+/**
+ * Base class for composite components. It carries no host knowledge; the
+ * reconciler injects `__enqueueUpdate` when it instantiates the component, and
+ * that closure re-reconciles the component's own subtree. Keeping the class
+ * host-agnostic is what lets the same component render in-game and in tests.
+ */
 export class Component<P = {}, S = {}> {
   public state: S = {} as S;
+
   constructor(public props: P = {} as P) {}
 
-  private __internalInstance!: Instance;
+  // Set by the reconciler at instantiation; unset until mounted.
+  public __internalInstance?: unknown;
+  public __enqueueUpdate?: () => void;
 
   setState(partialState: Partial<S>): void {
     this.state = Object.assign({}, this.state, partialState);
-    updateInstance(this.__internalInstance);
+    if (this.__enqueueUpdate) {
+      this.__enqueueUpdate();
+    }
   }
 
   render(): InternalElement | null {
-    throw 'render not implemented';
+    throw new Error('render not implemented');
   }
 }
