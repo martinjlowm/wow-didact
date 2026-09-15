@@ -1,16 +1,18 @@
 {
   "name": "didact",
   "description": "React-like UI rendering for widgets in WoW AddOns",
+  "packageManager": "yarn@4.18.0+sha512.fcb8716fe7cd0eece141ffc18b92193a9df9204c1ba83189c288835223fc0bbe64af473bab0d5e9927a7daeb5caf2bb07eb2787cc9338ca040ea125f2a1f2f7e",
   "scripts": {
     "build": "tstl -p tsconfig.json",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
     "typecheck": "tsc -p tsconfig.check.json",
     "watch": "tstl -p tsconfig.json --watch",
     "eslint": "eslint src/\\*\\*/\\*.ts",
     "eslint:fix": "eslint --fix src/\\*\\*/\\*.ts"
   },
   "devDependencies": {
+    "@types/bun": "^1.2.0",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
     "@yarnpkg/pnpify": "^2.0.0-rc.20",
@@ -28,21 +30,9 @@
     "typescript": "^3.8.3",
     "typescript-language-server": "^0.4.0",
     "typescript-to-lua": "^0.32.0",
-    "vitest": "^2.1.9",
     "vscode-jsonrpc": "^5.0.1",
     "vscode-languageserver-protocol": "^3.15.3",
     "wow-classic-declarations": "github:wartoshika/wow-classic-declarations#v1.13.3-release.1"
-  },
-  "installConfig": {
-    "pnp": true
-  },
-  "dependenciesMeta": {
-    "lua-types": {
-      "unplugged": true
-    },
-    "wow-classic-declarations": {
-      "unplugged": true
-    }
   },
   "husky": {
     "hooks": {

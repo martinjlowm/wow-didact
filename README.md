@@ -49,13 +49,25 @@ a frame's identity across renders and creates a new one only for a genuinely new
 key. The `prepending a keyed child` fuzz case pins this: prepending one child
 creates exactly the new subtree and rebuilds none of the shifted siblings.
 
+## Development environment
+
+`devenv.nix` provides the toolchain: Node 24 (runs the `tstl` build), yarn 4
+(manages packages), and bun (runs the tests). `direnv allow` loads it from
+`.envrc`, or run `devenv shell` directly. Entering the shell runs `yarn install`.
+
+Package management is yarn with `nodeLinker: node-modules` (`.yarnrc.yml`), not
+PnP: bun reads the real `node_modules` tree yarn writes to resolve fast-check and
+the source aliases. `nmMode: hardlinks-global` links package files from a shared
+store instead of copying them per project.
+
 ## Testing
 
 Three pillars back the reconciler.
 
 - **TypeScript.** The core is generic over the host node type and typechecks
-  under `strict`. Run `npm run typecheck` (`tsconfig.check.json` scopes the check
-  to the host-agnostic core and the tests).
+  under `strict`. Run `yarn typecheck`; `tsconfig.check.json` scopes the check to
+  the host-agnostic core, which carries no WoW, node or bun types and so compiles
+  under the `tstl`-pinned TypeScript.
 - **Property testing.** `test/reconciler.property.test.ts` asserts the
   invariants over fast-check-generated element trees: the rendered tree is
   structurally equal to the element tree after every render, no nodes leak,
@@ -65,4 +77,4 @@ Three pillars back the reconciler.
   sequences and targeted insert, remove and type-change cases, checking the
   same invariants across hundreds of runs per case.
 
-Run the suite with `npm test` (watch mode: `npm run test:watch`).
+Run the suite with `yarn test` (`bun test`; watch mode: `yarn test:watch`).

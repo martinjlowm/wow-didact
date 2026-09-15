@@ -1,5 +1,5 @@
+import { describe, expect, it } from 'bun:test';
 import fc from 'fast-check';
-import { describe, expect, it } from 'vitest';
 
 import { elementArb, keyedReorderArb, treeSequenceArb } from '$/arbitraries';
 import { collectIds, mount, nodeCount, shapeOfElement, shapeOfNode } from '$/helpers';

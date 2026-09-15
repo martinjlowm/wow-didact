@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://devenv.sh/devenv.schema.json
+inputs:
+  # Release channel rather than devenv-nixpkgs/rolling, so the Node, yarn and bun
+  # versions the shell hands out move on a known cadence instead of daily.
+  nixpkgs:
+    url: github:NixOS/nixpkgs/nixos-26.05

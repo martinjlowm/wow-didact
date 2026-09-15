@@ -15,12 +15,12 @@
       "$/*": ["test/*"]
     }
   },
+  "//": "Scoped to the host-agnostic core. It carries no WoW, node or bun types, so it typechecks under the tstl-pinned TypeScript. The bun test files are checked by running them.",
   "include": [
     "src/element.ts",
     "src/component.ts",
     "src/host-config.ts",
     "src/reconciler.ts",
-    "src/hosts/test-host.ts",
-    "test/**/*.ts"
+    "src/hosts/test-host.ts"
   ]
 }

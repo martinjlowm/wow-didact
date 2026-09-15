@@ -1,6 +1,10 @@
 .log/
 .pnp.js
+.pnp.cjs
 .yarn/
 dist/
 node_modules
-.tooling/
+.devenv/
+.devenv.flake.nix
+.direnv/
+devenv.local.nix
